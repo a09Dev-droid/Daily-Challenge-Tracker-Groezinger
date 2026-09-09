@@ -3,7 +3,7 @@ import { supabase } from './supabase';
 import { Trophy, CheckCircle2, Flame, Calendar, Dumbbell, TrendingUp, BarChart3, Clock, AlertCircle, History, ShieldAlert } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 
-const MEMBERS = ['Daniel', 'Ricki', 'Emma', 'Lusia', 'Clara', 'Aye'];
+const MEMBERS = ['Daniel', 'Ricki', 'Emma', 'Lusia', 'Clara', 'Aye', 'Arvin'];
 
 const DAILY_CHALLENGE = [
   '3x 1 Min. Plank',
