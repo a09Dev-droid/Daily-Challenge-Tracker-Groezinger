@@ -37,7 +37,7 @@ const HEROES: Record<string, Hero> = {
   Ricki: { gender: 'f', bg: '#3b0d0d', suit: '#dc2626', cape: '#fbbf24', mask: '#7f1d1d', hair: '#1c1917', skin: '#f5c9a6', emblem: 'bolt' },
   Clara: { gender: 'f', bg: '#2e1065', suit: '#7c3aed', cape: '#e879f9', mask: '#4c1d95', hair: '#b45309', skin: '#f8d5b8', emblem: 'star' },
   Emma: { gender: 'f', bg: '#042f2e', suit: '#0d9488', cape: '#5eead4', mask: '#134e4a', hair: '#facc15', skin: '#fde0c8', emblem: 'shield' },
-  Lusia: { gender: 'f', bg: '#500724', suit: '#db2777', cape: '#fb7185', mask: '#831843', hair: '#7c2d12', skin: '#e8b48f', emblem: 'heart' },
+  Louisa: { gender: 'f', bg: '#500724', suit: '#db2777', cape: '#fb7185', mask: '#831843', hair: '#7c2d12', skin: '#e8b48f', emblem: 'heart' },
   Daniel: { gender: 'm', bg: '#172554', suit: '#2563eb', cape: '#ef4444', mask: '#1e3a8a', hair: '#292524', skin: '#f1c3a0', emblem: 'bolt' },
   Arvin: { gender: 'm', bg: '#052e16', suit: '#16a34a', cape: '#a3e635', mask: '#14532d', hair: '#0c0a09', skin: '#c68a62', emblem: 'shield' },
   Aye: { gender: 'm', bg: '#431407', suit: '#ea580c', cape: '#fde047', mask: '#7c2d12', hair: '#57534e', skin: '#f3cfb0', emblem: 'flame' },
@@ -111,7 +111,7 @@ function HeroAvatar({ name, className = 'w-10 h-10' }: { name: string; className
 }
 
 
-const MEMBERS = ['Daniel', 'Ricki', 'Emma', 'Lusia', 'Clara', 'Aye', 'Arvin'];
+const MEMBERS = ['Daniel', 'Ricki', 'Emma', 'Louisa', 'Clara', 'Aye', 'Arvin'];
 
 type ExerciseType = 'plank' | 'squat' | 'pushup';
 
