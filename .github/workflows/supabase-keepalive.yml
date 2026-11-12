@@ -18,10 +18,13 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          URL="${SUPABASE_URL%/}"
+          URL=$(printf '%s' "$SUPABASE_URL" | tr -d '[:space:]')
+          URL="${URL%/}"
+          KEY=$(printf '%s' "$SUPABASE_ANON_KEY" | tr -d '[:space:]')
+          echo "Länge URL: ${#URL}, Länge Key: ${#KEY} (erwartet 40 und 46)"
           status=$(curl -s -o antwort.txt -w "%{http_code}" \
             "$URL/rest/v1/daily_logs?select=*&limit=1" \
-            -H "apikey: $SUPABASE_ANON_KEY")
+            -H "apikey: $KEY")
           echo "Antwort von Supabase: $status"
           if [ "$status" -ge 400 ]; then
             echo "Ping fehlgeschlagen. Ist das Projekt pausiert oder sind die Secrets falsch?"
