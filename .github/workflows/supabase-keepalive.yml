@@ -1,0 +1,29 @@
+# Hält das Supabase-Projekt wach: Supabase pausiert kostenlose Projekte
+# nach 7 Tagen ohne Aktivität. Diese Action fragt einmal am Tag die
+# Tabelle daily_logs ab. Benötigt die Repository-Secrets
+# SUPABASE_URL und SUPABASE_ANON_KEY (gleiche Werte wie in .env.local).
+name: Supabase Keepalive
+
+on:
+  schedule:
+    - cron: "17 6 * * *" # täglich 06:17 UTC
+  workflow_dispatch: # manuell auslösbar unter Actions
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Datenbank abfragen
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          status=$(curl -s -o /dev/null -w "%{http_code}" \
+            "$SUPABASE_URL/rest/v1/daily_logs?select=*&limit=1" \
+            -H "apikey: $SUPABASE_ANON_KEY" \
+            -H "Authorization: Bearer $SUPABASE_ANON_KEY")
+          echo "Antwort von Supabase: $status"
+          if [ "$status" -ge 400 ]; then
+            echo "Ping fehlgeschlagen. Ist das Projekt pausiert oder sind die Secrets falsch?"
+            exit 1
+          fi
